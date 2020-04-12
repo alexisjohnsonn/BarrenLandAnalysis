@@ -28,6 +28,7 @@ public class BarrenLandAnalysis {
             while (!inputReceived) {
                 inputReceived = setBarrenLand(in, farm);
             }
+            System.out.println("Calculating . . . \n");
             printAreas(farm.getFertileLand());
 
         } catch (InvalidBoundaryException e) {
@@ -40,7 +41,7 @@ public class BarrenLandAnalysis {
         Point bottom = new Point();
         Point top = new Point();
         if (in.hasNextLine()) {
-            String nextline = in.nextLine();
+            String nextline = in.nextLine().trim();
             if (nextline.isEmpty()) {
                 return true; // user is done entering barren land
             }
@@ -51,9 +52,9 @@ public class BarrenLandAnalysis {
             }
             try {
                 bottom.setLocation(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]));
-                top.setLocation(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
+                top.setLocation(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3]));
             } catch (NumberFormatException e) {
-                System.out.println("Valid input is 4 integers. At least one of your inputs was not an integer.\n");
+                System.out.println("At least one of your inputs was not an integer. Valid input is 4 integers.\n");
                 return false;
             }
             if (bottom.x > top.x || bottom.y > top.y) {
