@@ -41,7 +41,7 @@ public class BarrenLandAnalysis {
         Point top = new Point();
         if (in.hasNextLine()) {
             String nextline = in.nextLine();
-            if (nextline.equals("\n")) {
+            if (nextline.isEmpty()) {
                 return true; // user is done entering barren land
             }
             String[] tokens = nextline.split("\\s+");
