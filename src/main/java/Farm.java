@@ -100,7 +100,7 @@ public class Farm {
     }
 
     private boolean needsFill(int x, int y, Point start, int prev) {
-        return x >= start.x && y >= start.y && x < width && y < length && land[x][y] == prev;
+        return x >= 0 && y >= 0 && x < width && y < length && land[x][y] == prev;
     }
 
     public void print() {
@@ -133,12 +133,16 @@ public class Farm {
     }
 
     public static void main(String[] args) throws InvalidBoundaryException {
-        Farm farm = new Farm(400, 600);
+      /*  Farm farm = new Farm(400, 600);
         farm.makeBarren(new Point(48,192), new Point(351,207));
         farm.makeBarren(new Point(120,52), new Point(135,547));
         farm.makeBarren(new Point(48,392), new Point(351,407));
         farm.makeBarren(new Point(260,52), new Point(275,547));
+        List<Integer> list = farm.getFertileLand(); */
+        Farm farm = new Farm(10, 15);
+        farm.makeBarren(new Point(0,0), new Point(4,5));
         List<Integer> list = farm.getFertileLand();
+        farm.print();
         for (int i=0; i<list.size(); i++) {
             System.out.print(list.get(i) + " ");
         }
