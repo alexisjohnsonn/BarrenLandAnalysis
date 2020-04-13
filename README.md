@@ -18,13 +18,13 @@ To find all fertile regions, I use a flood fill algorithm. This algorithm is eas
 on a white space in Microsoft paint, all connected white space will be filled with the designated color. Likewise, when a fertile region is filled, all connected 
 fertile space will also be filled. 
 
-To find each fertile area, I iterate through the matrix. I initialize the flood fill value to 1. This value is incremented each time I need to flood a new region.
+To find each fertile area, I iterate through the matrix, beginning at (0,0). I initialize a "flood fill" value to 1. This value is incremented each time I need to flood a new region.
+
 When I find a coordinate (i,j) where land[i][j] == 0, this means it is fertile land that has not been searched yet.
 Beginning at land[i][j], I search for all connected 0's using a Depth First Search. Each time I reach a node, I change its value from 0 to the flood fill value
-so it will not be counted again. Additionally I increment an "area" counter at each node. When the DFS finishes, the counter represents the number of 
-nodes visited, which is the area of the fertile region. I append this to an integer list of fertile areas. 
+so it will not be counted again. Additionally, at each node I increment a counter value to keep track of the number of nodes I have visited thus far. When the DFS finishes, the counter equals the area of the fertile region. I append this to an integer list of fertile areas. 
 
-When the DFS finishes, I continue iterating through the rest of the matrix, repeating this process each time I find a node with a value of 0. Once I've 
+Each time I finish a DFS, I continue iterating through the rest of the matrix, repeating the flood fill each time I find a node with a value of 0. Once I've 
 iterated through the entire matrix, I sort the list of areas in ascending order and return it.
 
 ## Obtaining the Project
@@ -36,9 +36,7 @@ The project uses Java with Maven for build automation. Unit tests are in Junit4.
 
 There are a few ways to run the project. 
 ### Command line with Maven. 
-I'm hoping this is the easiest method for running the project if you have Maven on 
-your machine. If not, it can be downloaded from https://maven.apache.org. However, I used 
-brew to install it: 
+I'm hoping this is the easiest method for running the project. If you don't have Maven on your machine, it can be downloaded from https://maven.apache.org. However if you're using Linux or MacOS, I recommend using Homebrew:
  ```brew install maven```
  
  Once you have Maven installed, navigate to the BarrenLandAnalysis directory.
@@ -53,6 +51,7 @@ brew to install it:
  
  ### IDE Integration
  Another way to run the program is by opening a new Maven project in an IDE like Intellij or Eclipse. 
+
  I used Intellij. The quickest way to open the project is to select 
  ```File->New->ProjectFromExistingSources```
  Then, choose the ```pom.xml``` file in the root directory.
@@ -62,7 +61,7 @@ brew to install it:
  in src/test/java/com/target/barrenland/FarmTest.java.
  
  ### Command line with Javac
- If you've made it this far, I'm sincerely sorry the first two options didn't work out. However you should
+ If you've made it this far, I'm sincerely sorry the first two options didn't work out. However you *should*
  be able to compile the command line program using the following instructions: 
  
  
