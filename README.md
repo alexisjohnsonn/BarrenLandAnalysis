@@ -1,4 +1,4 @@
-#Barren Land Analysis Problem
+# Barren Land Analysis Problem
 
 ## Introduction 
 From the problem specification: 
